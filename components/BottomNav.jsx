@@ -1,28 +1,44 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const BottomNav = () => {
+const BottomNav = ({ home, discover, order, profie }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.tab}>
-        <Ionicons name="home-outline" size={24} color="#666" />
+        <Ionicons
+          name='home-outline'
+          size={24}
+          color={home ? 'black' : 'rgba(0,0,0,0.4)'}
+        />
       </TouchableOpacity>
-      
+
       <TouchableOpacity style={styles.tab}>
-        <Ionicons name="compass-outline" size={24} color="#666" />
+        <Ionicons
+          name='compass-outline'
+          size={24}
+          color={discover ? 'black' : 'rgba(0,0,0,0.4)'}
+        />
       </TouchableOpacity>
-      
+
       <TouchableOpacity style={styles.tab}>
-        <Ionicons name="receipt-outline" size={24} color="#666" />
+        <Ionicons
+          name='receipt-outline'
+          size={24}
+          color={order ? 'black' : 'rgba(0,0,0,0.4)'}
+        />
       </TouchableOpacity>
-      
+
       <TouchableOpacity style={styles.tab}>
-        <Ionicons name="person-outline" size={24} color="#666" />
+        <Ionicons
+          name='person-outline'
+          size={24}
+          color={profie ? 'black' : 'rgba(0,0,0,0.4)'}
+        />
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -48,8 +64,7 @@ const styles = StyleSheet.create({
   tab: {
     alignItems: 'center',
     padding: 5,
-    backgroundColor:'red'
   },
-})
+});
 
-export default BottomNav
+export default BottomNav;

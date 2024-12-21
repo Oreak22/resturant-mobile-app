@@ -18,6 +18,7 @@ import { Link, router } from 'expo-router';
 import ForgetPassword from '../../components/ForgetPassword';
 import Validate from '../../components/Validate';
 import NewPasswordPage from '../../components/NewPasswordPage';
+import SecondaryNavbar from '../../components/SecondaryNavbar';
 
 const index = () => {
   const [resetPassword, setResetPassword] = useState(false);
@@ -31,6 +32,7 @@ const index = () => {
     <>
       <StatusBar backgroundColor='#ffffff' barStyle='dark-content' />
       <SafeAreaView style={[styles.container]}>
+        <SecondaryNavbar />
         <View
           style={{
             backgroundColor: 'transparent',
