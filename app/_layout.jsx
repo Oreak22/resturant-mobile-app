@@ -57,6 +57,48 @@ const _layout = () => {
           headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
         }}
       />
+      <Stack.Screen
+        name='product/[id]'
+        options={{
+          headerShown: false,
+          animation: 'slide_from_left',
+          presentation: 'modal',
+          headerLeft: () => <Text>Back</Text>,
+          headerLeftContainerStyle: { paddingLeft: 10 },
+          headerLeftLabelStyle: { fontFamily: 'Product Sans Regular' },
+          headerRight: () => <Text>Next</Text>,
+          headerRightContainerStyle: { paddingRight: 10 },
+          headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
+        }}
+      />
+      <Stack.Screen
+        name='search'
+        options={{
+          headerShown: false,
+          animation: 'slide_from_left',
+          presentation: 'modal',
+          headerLeft: () => <Text>Back</Text>,
+          headerLeftContainerStyle: { paddingLeft: 10 },
+          headerLeftLabelStyle: { fontFamily: 'Product Sans Regular' },
+          headerRight: () => <Text>Next</Text>,
+          headerRightContainerStyle: { paddingRight: 10 },
+          headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
+        }}
+      />
+      <Stack.Screen
+        name='search/searchResult/[search]'
+        options={{
+          headerShown: false,
+          animation: 'slide_from_left',
+          presentation: 'modal',
+          headerLeft: () => <Text>Back</Text>,
+          headerLeftContainerStyle: { paddingLeft: 10 },
+          headerLeftLabelStyle: { fontFamily: 'Product Sans Regular' },
+          headerRight: () => <Text>Next</Text>,
+          headerRightContainerStyle: { paddingRight: 10 },
+          headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
+        }}
+      />
     </Stack>
   );
 };

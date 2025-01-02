@@ -32,7 +32,6 @@ const index = () => {
     <>
       <StatusBar backgroundColor='#ffffff' barStyle='dark-content' />
       <SafeAreaView style={[styles.container]}>
-        <SecondaryNavbar />
         <View
           style={{
             backgroundColor: 'transparent',

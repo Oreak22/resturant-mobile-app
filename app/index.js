@@ -49,7 +49,6 @@ export default function Page() {
   };
   return (
     <>
-      <ProfieBar />
       <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
       <SafeAreaView style={styles.container}>
         <LinearGradient

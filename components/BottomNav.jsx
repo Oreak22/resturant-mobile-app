@@ -1,41 +1,42 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Link } from 'expo-router';
 
 const BottomNav = ({ home, discover, order, profie }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.tab}>
+      <Link href='home' style={styles.tab}>
         <Ionicons
           name='home-outline'
           size={24}
           color={home ? 'black' : 'rgba(0,0,0,0.4)'}
         />
-      </TouchableOpacity>
+      </Link>
 
-      <TouchableOpacity style={styles.tab}>
+      <Link href='/search' style={styles.tab}>
         <Ionicons
           name='compass-outline'
           size={24}
           color={discover ? 'black' : 'rgba(0,0,0,0.4)'}
         />
-      </TouchableOpacity>
+      </Link>
 
-      <TouchableOpacity style={styles.tab}>
+      <Link href='/' style={styles.tab}>
         <Ionicons
           name='receipt-outline'
           size={24}
           color={order ? 'black' : 'rgba(0,0,0,0.4)'}
         />
-      </TouchableOpacity>
+      </Link>
 
-      <TouchableOpacity style={styles.tab}>
+      <Link href='/' style={styles.tab}>
         <Ionicons
           name='person-outline'
           size={24}
           color={profie ? 'black' : 'rgba(0,0,0,0.4)'}
         />
-      </TouchableOpacity>
+      </Link>
     </View>
   );
 };

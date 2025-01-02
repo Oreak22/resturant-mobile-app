@@ -63,7 +63,7 @@ const ProfieBar = () => {
                     <Text style={styles.NavbarBodyItemText}>Home Page</Text>
                   </View>
                 </Link>
-                <Link href='/profile'>
+                <Link href='/search'>
                   <View style={styles.NavbarBodyItemIcon}>
                     <Feather
                       name='search'
