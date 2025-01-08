@@ -13,11 +13,28 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link } from 'expo-router';
 import Ratings from './Ratings';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToWishlist } from '../redux/golbalReducer';
 
 const SearchList = ({ data }) => {
   const { width, height } = Dimensions.get('window');
   const even = (e) => e % 2 === 0;
   const handleNavigation = (to) => {};
+  const wishList = useSelector((state) => state.globalReducer.wishlist);
+  const cart = useSelector((state) => state.globalReducer.cart);
+  const dispatch = useDispatch();
+  const addWishList = (item) => {
+    dispatch(addToWishlist(item));
+  };
+  const SeeIf = (item) => {
+    const inWish = wishList.filter(
+      (wishItem) => wishItem.id === item.id
+    );
+    console.log(inWish.length);
+    if (inWish.length > 0) return true;
+
+    return false;
+  };
   const renderItem = ({ item, index, separators }) => (
     <Link
       style={{ flexDirection: 'column', width: 0.4 * width }}
@@ -36,11 +53,13 @@ const SearchList = ({ data }) => {
           source={item.img}
           style={{ width: '100%', aspectRatio: '1/1.5' }}
         />
-        <TouchableOpacity style={styles.wishlist}>
+        <TouchableOpacity
+          style={styles.wishlist}
+          onPress={() => addWishList(item)}>
           <FontAwesome
             name='heart'
             size={20}
-            color={even(index) ? '#FF6E6E' : '#D8D8D8'}
+            color={SeeIf(item) ? '#FF6E6E' : '#D8D8D8'}
           />
         </TouchableOpacity>
       </View>

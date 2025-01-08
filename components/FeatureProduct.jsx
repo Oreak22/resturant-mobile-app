@@ -20,7 +20,7 @@ const FeatureProduct = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down1.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -55,7 +55,7 @@ const FeatureProduct = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down2.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -90,8 +90,31 @@ const FeatureProduct = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
-      reviews: [],
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down9.',
+      reviews: {
+        ratings: {
+          s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
+          s4: { num: 12, people: ['Jenifer Rose', 'Kelly Rihana'] },
+          s3: { num: 5, people: ['Jenifer Rose', 'Kelly Rihana'] },
+          s2: { num: 2, people: ['Jenifer Rose', 'Kelly Rihana'] },
+          s1: { num: 0, people: ['Jenifer Rose', 'Kelly Rihana'] },
+        },
+        comments: [
+          {
+            name: 'Jenifer Rose',
+            img: require('../assets/icon/jennifer comment.png'),
+            statment:
+              'I love it.  Awesome customer service!! Helped me out with adding an additional item to my order. Thanks again!',
+            ratting: 5,
+          },
+          {
+            name: 'Kelly Rihana',
+            img: require('../assets/icon/kelly comment.png'),
+            statment: `I'm very happy with order, It was delivered on and good quality. Recommended!`,
+            ratting: 5,
+          },
+        ],
+      },
     },
   ];
   const doller = '$';

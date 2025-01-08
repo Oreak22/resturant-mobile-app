@@ -7,7 +7,6 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-  Alert,
   ScrollView,
 } from 'react-native';
 import React, { useState } from 'react';
@@ -20,10 +19,15 @@ import Collapsible from '../../components/Collapsible';
 import FeatureProduct from '../../components/FeatureProduct';
 import Reviews from '../../components/Reviews';
 import AddtocartBtn from '../../components/AddtocartBtn';
+import Alert from '../../components/Alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToWishlist } from '../../redux/golbalReducer';
 
 const index = () => {
   const { id, details } = useLocalSearchParams();
   const data = JSON.parse(details);
+  const [alertIt, setaertIt] = useState(false);
+  const [responce, setResponce] = useState({});
   // const {ratings} =
   const total = [
     data.reviews.ratings.s1.num,
@@ -39,6 +43,20 @@ const index = () => {
   const [similarIsOpen, setSimilarIsOpen] = useState(true);
   const selectSize = (s) => setSize(s);
   const selectColor = (item) => setColor(item);
+  const wishList = useSelector((state) => state.globalReducer.wishlist);
+  const SeeIf = () => {
+    const inWish = wishList.filter((wishItem) => wishItem.id === data.id);
+    console.log(inWish.length);
+    if (inWish.length > 0) return true;
+
+    return false;
+  };
+
+  const dispatch = useDispatch();
+
+  const addWishList = () => {
+    dispatch(addToWishlist(data));
+  };
   return (
     <View
       style={{
@@ -77,6 +95,7 @@ const index = () => {
         </TouchableOpacity>
         {/* wishList btn */}
         <TouchableOpacity
+          onPress={() => addWishList()}
           style={[
             {
               width: 50,
@@ -88,9 +107,20 @@ const index = () => {
             },
             styles.backbtn,
           ]}>
-          <FontAwesome name='heart' size={20} color={'#FF6E6E'} />
+          <FontAwesome
+            name='heart'
+            size={20}
+            color={SeeIf() ? '#FF6E6E' : '#D8D8D8'}
+          />
         </TouchableOpacity>
       </View>
+      {alertIt && (
+        <Alert
+          message={responce.message}
+          alertIt={alertIt}
+          setalertIt={setaertIt}
+        />
+      )}
       <ScrollView>
         <SafeAreaView
           style={{
@@ -263,7 +293,11 @@ const index = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
-      <AddtocartBtn item={data} />
+      <AddtocartBtn
+        setAlert={setaertIt}
+        setResponce={setResponce}
+        item={data}
+      />
     </View>
   );
 };

@@ -12,11 +12,13 @@ import SearchList from '../../../components/SearchList';
 import Octicons from '@expo/vector-icons/Octicons';
 import FilterSideBar from '../../../components/FilterSideBar';
 import SecondaryNavbar from '../../../components/SecondaryNavbar';
+import { useSelector } from 'react-redux';
 
 const searchResult = () => {
   const { search, parameters } = useLocalSearchParams();
   const [filter, setfilter] = useState(false);
   const [searching, setsearching] = useState(true);
+  const cart = useSelector((state) => state.globalReducer.cart);
   const data = [
     {
       id: 1,
@@ -27,7 +29,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down3.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -62,7 +64,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down3.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -97,7 +99,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down5.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -124,7 +126,7 @@ const searchResult = () => {
       },
     },
     {
-      id: 1,
+      id: 4,
       name: 'Turtleneck Sweater',
       img: require('../../../assets/img/linen dress.png'),
       price: 100,
@@ -132,7 +134,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down6.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -159,7 +161,7 @@ const searchResult = () => {
       },
     },
     {
-      id: 2,
+      id: 5,
       name: 'Long Sleeve Dress',
       img: require('../../../assets/img/filted waist.png'),
       price: 200,
@@ -167,7 +169,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down7.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -194,7 +196,7 @@ const searchResult = () => {
       },
     },
     {
-      id: 3,
+      id: 6,
       name: 'sportwear Set',
       img: require('../../../assets/img/maxi dress.png'),
       price: 300,
@@ -202,7 +204,7 @@ const searchResult = () => {
       color: ['E7C0A7', '050302', 'EE6969'],
       size: ['L', 'M', 'S'],
       description:
-        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.',
+        'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down8.',
       reviews: {
         ratings: {
           s5: { num: 30, people: ['Jenifer Rose', 'Kelly Rihana'] },
@@ -229,6 +231,15 @@ const searchResult = () => {
       },
     },
   ];
+
+  const realData = data.filter(
+    (product) =>
+      !cart.some(
+        (cartItem) =>
+          cartItem.id === product.id && cartItem.size === product.size
+      )
+  );
+  console.log(realData);
   const model = () => {
     setfilter(!filter);
   };
@@ -301,7 +312,7 @@ const searchResult = () => {
               </TouchableOpacity>
             </View>
             <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
-              <SearchList data={data} />
+              <SearchList data={realData} />
             </View>
           </>
         )}
