@@ -48,9 +48,12 @@ export default function Page() {
 		}
 	};
 	const router = useRouter();
-	useEffect(async () => {
-		if (await AsyncStorage.getItem("userRecord")) {
-			router.replace("/login");
+	let nav;
+	useEffect(() => {
+		if (AsyncStorage.getItem("userRecord")) {
+			nav = setTimeout(() => {
+				router.replace("/login");
+			}, 10);
 		}
 	}, []);
 

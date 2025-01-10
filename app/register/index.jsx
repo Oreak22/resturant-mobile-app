@@ -41,7 +41,14 @@ const index = () => {
 			return true;
 		}
 	};
+	const resetField = () => {
+		setEmail("");
+		setName("");
+		setPassword("");
+		setConfirmPassword("");
+	};
 	const register = async () => {
+		setAlertIt(false);
 		if (!testFeilds()) return;
 		const userData = await AsyncStorage.getItem("userRecord");
 		if (userData) {
@@ -53,21 +60,39 @@ const index = () => {
 				setAlertIt(true);
 				setResponce({ status: "error", message: "user existed" });
 			} else {
-				const newUser = { email, name, password, id: data.length + 1 };
+				const newUser = {
+					email: email.toLocaleLowerCase(),
+					name,
+					password,
+					id: data.length + 1,
+				};
 				data.push(newUser);
 				await AsyncStorage.setItem("userRecord", JSON.stringify(data));
 				console.log(data);
 				console.log(await AsyncStorage.getItem("userRecord"));
 				setAlertIt(true);
-				setResponce({ status: "success", message: "user created" });
+				setResponce({
+					status: "success",
+					message: "User created, Continue at login",
+				});
+				resetField();
 			}
 		} else {
 			const newData = [];
-			const newUser = { email, name, password, id: 1 };
+			const newUser = {
+				email: email.toLocaleLowerCase(),
+				name,
+				password,
+				id: 1,
+			};
 			newData.push(newUser);
 			await AsyncStorage.setItem("userRecord", JSON.stringify(newData));
 			setAlertIt(true);
-			setResponce({ status: "success", message: "user created" });
+			setResponce({
+				status: "success",
+				message: "User created, Continue at login",
+			});
+			resetField();
 		}
 	};
 	return (
@@ -112,6 +137,7 @@ const index = () => {
 								keyboardType='name'
 								autoCapitalize='words'
 								autoComplete='name'
+								value={name}
 								onChangeText={(e) => setName(e)}
 							/>
 						</View>
@@ -132,6 +158,7 @@ const index = () => {
 								autoCorrect={true}
 								autoFocus={false}
 								autoSize={true}
+								value={email}
 								onChangeText={(e) => setEmail(e)}
 							/>
 						</View>
@@ -149,6 +176,7 @@ const index = () => {
 								keyboardType='password'
 								autoComplete='password-new'
 								secureTextEntry={true}
+								value={password}
 								onChangeText={(e) => setPassword(e)}
 							/>
 						</View>
@@ -166,6 +194,7 @@ const index = () => {
 								keyboardType='password'
 								autoComplete='password-new'
 								secureTextEntry={true}
+								value={confirmPassword}
 								onChangeText={(e) => setConfirmPassword(e)}
 							/>
 						</View>
