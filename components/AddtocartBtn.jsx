@@ -101,7 +101,7 @@ const AddtocartBtn = ({ item, setAlert, setResponce }) => {
                 fontWeight: '900',
                 marginBottom: 6,
               }}>
-              Go TO Cart
+              Go To Cart
             </Text>
           </Link>
           <Link
