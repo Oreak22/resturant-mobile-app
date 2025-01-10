@@ -11,10 +11,17 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'expo-router';
 
 const index = () => {
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const register =()=>{
+    
+  }
   return (
     <>
       <StatusBar backgroundColor='#ffffff' barStyle='dark-content' />

@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "resturant-mobile",
-    "slug": "resturant-mobile",
+    "name": "fashion-mobile",
+    "slug": "fashion-mobile",
     "version": "1.0.0",
-    "scheme": "resturant-mobile",
+    "scheme": "fashion-mobile",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,16 +11,21 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "cover",
-      "backgroundColor": "#fafafa"  
+      "backgroundColor": "#fafafa"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.oreak.fashionmobile",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +34,17 @@
       "Product Sans Regular": "./assets/fonts/Product Sans Regular.ttf",
       "Product Sans Bold": "./assets/fonts/Product Sans Bold.ttf"
     },
-    "plugins": ["expo-router", "expo-font"]
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "updates": {
+      "url": "https://u.expo.dev/0ba3f351-6fdc-4c34-8ee9-c934296dc73a"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "60ab9f30-71dd-4a7c-87b4-a0f70adc9dd7"
+      }
+    }
   }
 }

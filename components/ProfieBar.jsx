@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import Feather from '@expo/vector-icons/Feather';
 import { Link } from 'expo-router';
 
-const ProfieBar = () => {
+const ProfieBar = ({ title }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -22,9 +22,9 @@ const ProfieBar = () => {
           onPress={() => setModalVisible(true)}>
           <Feather name='menu' size={24} color='black' />
         </TouchableOpacity>
-        <Text style={styles.NavbarTitle}>Gemstore</Text>
+        <Text style={styles.NavbarTitle}>{title ? title : 'Gemstore'}</Text>
         <TouchableOpacity style={styles.NavbarIcon}>
-          <Feather name='bell' size={24} color='black' />
+          <Feather name='shopping-cart' size={24} color='black' />
         </TouchableOpacity>
       </View>
       <Modal
@@ -74,7 +74,7 @@ const ProfieBar = () => {
                     <Text style={styles.NavbarBodyItemText}>Discover</Text>
                   </View>
                 </Link>
-                <Link href='/profile'>
+                <Link href='/order'>
                   <View style={styles.NavbarBodyItemIcon}>
                     <Feather
                       name='shopping-bag'
@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 10 : 40,
     paddingBottom: 10,
-   
   },
   NavbarTitle: {
     fontSize: 30,

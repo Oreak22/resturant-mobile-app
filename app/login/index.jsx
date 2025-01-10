@@ -28,6 +28,9 @@ const index = () => {
   const [vaidateCode, setVaidateCode] = useState(false);
   const [newPasswordSet, setNewPasswordSet] = useState(false);
   const [requestReset, setRequestReset] = useState(true);
+  const login=()=>{
+    
+  }
   return (
     <>
       <StatusBar backgroundColor='#ffffff' barStyle='dark-content' />

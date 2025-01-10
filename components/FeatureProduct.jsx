@@ -12,7 +12,7 @@ import { Link } from 'expo-router';
 const FeatureProduct = () => {
   const data = [
     {
-      id: 1,
+      id: 11,
       name: 'Turtleneck Sweater',
       img: require('../assets/img/sweaters.png'),
       price: 100,
@@ -47,7 +47,7 @@ const FeatureProduct = () => {
       },
     },
     {
-      id: 2,
+      id: 22,
       name: 'Long Sleeve Dress',
       img: require('../assets/img/long sleeve.png'),
       price: 200,
@@ -82,7 +82,7 @@ const FeatureProduct = () => {
       },
     },
     {
-      id: 3,
+      id: 33,
       name: 'sportwear Set',
       img: require('../assets/img/sport wear.png'),
       price: 300,

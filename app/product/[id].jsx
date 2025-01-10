@@ -28,7 +28,6 @@ const index = () => {
   const data = JSON.parse(details);
   const [alertIt, setaertIt] = useState(false);
   const [responce, setResponce] = useState({});
-  // const {ratings} =
   const total = [
     data.reviews.ratings.s1.num,
     data.reviews.ratings.s2.num,
@@ -37,13 +36,20 @@ const index = () => {
     data.reviews.ratings.s5.num,
   ].reduce((a, b) => a + b, 0);
   const [size, setSize] = useState('');
-  const [color, setColor] = useState();
+  const [color, setColor] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const [reviewIsopen, setReviewIsopen] = useState(true);
   const [similarIsOpen, setSimilarIsOpen] = useState(true);
-  const selectSize = (s) => setSize(s);
-  const selectColor = (item) => setColor(item);
+  const selectSize = (s) => {setSize(s); console.log(s)};
+  const selectColor = (item) =>{ setColor(item); console.log(item)};
   const wishList = useSelector((state) => state.globalReducer.wishlist);
+  const orderItem={
+    id: data.id,
+    price: data.price,
+    name: data.name,
+    size:size,
+    color:color,
+  };
   const SeeIf = () => {
     const inWish = wishList.filter((wishItem) => wishItem.id === data.id);
     console.log(inWish.length);
@@ -115,11 +121,7 @@ const index = () => {
         </TouchableOpacity>
       </View>
       {alertIt && (
-        <Alert
-          message={responce.message}
-          alertIt={alertIt}
-          setalertIt={setaertIt}
-        />
+        <Alert message={responce} alertIt={alertIt} setalertIt={setaertIt} />
       )}
       <ScrollView>
         <SafeAreaView
@@ -296,7 +298,7 @@ const index = () => {
       <AddtocartBtn
         setAlert={setaertIt}
         setResponce={setResponce}
-        item={data}
+        item={orderItem}
       />
     </View>
   );

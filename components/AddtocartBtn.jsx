@@ -8,7 +8,7 @@ import { Link } from 'expo-router';
 const AddtocartBtn = ({ item, setAlert, setResponce }) => {
   const cart = useSelector((state) => state.globalReducer.cart);
   const dispatch = useDispatch();
-  const findIf = cart.filter((cart) => cart.description === item.description);
+  const findIf = cart.filter((cart) => cart.id === item.id);
   const checkExist = () => findIf.length > 0;
   console.log(checkExist(), 'found');
   const addToCartFunction = () => {
@@ -20,9 +20,18 @@ const AddtocartBtn = ({ item, setAlert, setResponce }) => {
         <TouchableOpacity
           disabled={checkExist()}
           onPress={() => {
-            setAlert(true);
-            addToCartFunction();
-            setResponce({ message: 'Added To Cart', status: 'success' });
+            setAlert(false);
+            if (item.size !="" && item.color !="") {
+              setAlert(true);
+              addToCartFunction();
+              setResponce({ message: 'Added To Cart', status: 'success' });
+            } else {
+              setAlert(true);
+              setResponce({
+                message: 'Select a prefered color and size',
+                status: 'error',
+              });
+            }
           }}
           style={{
             height: 0.1 * Dimensions.get('window').height,

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cart: [],
   wishlist: [],
+  order:[]
 };
 
 export const dataSlice = createSlice({
@@ -29,6 +30,9 @@ export const dataSlice = createSlice({
         console.log('added to wishlist');
       }
     },
+    cartOut:(state,action)=>{
+      
+    }
   },
 });
 

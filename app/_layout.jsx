@@ -77,7 +77,7 @@ const _layout = () => {
           }}
         />
         <Stack.Screen
-          name='search'
+          name='search/index'
           options={{
             headerShown: false,
             animation: 'slide_from_left',
@@ -104,7 +104,22 @@ const _layout = () => {
             headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
           }}
         />
+         <Stack.Screen
+          name='order/index'
+          options={{
+            headerShown: false,
+            animation: 'slide_from_left',
+            presentation: 'modal',
+            headerLeft: () => <Text>Back</Text>,
+            headerLeftContainerStyle: { paddingLeft: 10 },
+            headerLeftLabelStyle: { fontFamily: 'Product Sans Regular' },
+            headerRight: () => <Text>Next</Text>,
+            headerRightContainerStyle: { paddingRight: 10 },
+            headerRightLabelStyle: { fontFamily: 'Product Sans Regular' },
+          }}
+        />
       </Stack>
+      
     </Provider>
   );
 };

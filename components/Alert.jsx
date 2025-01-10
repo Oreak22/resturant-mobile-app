@@ -5,12 +5,15 @@ import {
   Animated,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { EvilIcons, FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 
 const Alert = ({ message, alertIt, setalertIt }) => {
   const { width, height } = Dimensions.get('window');
+  const [color, setColor] = useState(
+    message.status === 'success' ? 'green' : message.status === 'error' && 'red'
+  );
 
   const progress = useRef(new Animated.Value(100)).current;
   const reset = () => (progress = useRef(new Animated.Value(100)).current);
@@ -18,7 +21,7 @@ const Alert = ({ message, alertIt, setalertIt }) => {
     Animated.timing(progress, {
       toValue: 0,
       duration: 5000,
-      useNativeDriver: false, 
+      useNativeDriver: false,
     }).start();
     const countDown = setTimeout(() => {
       setalertIt(false);
@@ -67,8 +70,8 @@ const Alert = ({ message, alertIt, setalertIt }) => {
               width: '100%',
               position: 'relative',
             }}>
-            <FontAwesome5 name='info-circle' size={24} color='black' />
-            <Text style={{ marginLeft: '3%' }}>{message}</Text>
+            <FontAwesome5 name='info-circle' size={24} color={color} />
+            <Text style={{ marginLeft: '3%', color }}>{message.message}</Text>
             <TouchableOpacity
               style={{
                 padding: '1%',
@@ -98,7 +101,7 @@ const Alert = ({ message, alertIt, setalertIt }) => {
               }}>
               <Animated.View
                 style={{
-                  backgroundColor: 'green',
+                  backgroundColor: color,
                   width: widthInterpolation,
                   height: '100%',
                   borderRadius: 10,
