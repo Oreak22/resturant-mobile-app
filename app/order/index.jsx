@@ -3,8 +3,10 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
 import ProfieBar from '../../components/ProfieBar';
+import { useSelector } from 'react-redux';
 
 const index = () => {
+  const userEmail= useSelector(state=>state.globalReducer.userEmail)
   return (
     <>
       <ProfieBar title={'My Orders'} />

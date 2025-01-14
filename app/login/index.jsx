@@ -21,6 +21,8 @@ import NewPasswordPage from "../../components/NewPasswordPage";
 import SecondaryNavbar from "../../components/SecondaryNavbar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Alert from "../../components/Alert";
+import { useDispatch } from "react-redux";
+import { userId } from "../../redux/golbalReducer";
 
 const index = () => {
 	const [resetPassword, setResetPassword] = useState(false);
@@ -33,6 +35,7 @@ const index = () => {
 	const [alertIt, setAlertIt] = useState(false);
 	const [respond, setRespond] = useState({});
 	const [loading, setLoading] = useState(false);
+	const dispatch = useDispatch();
 	const testField = () => {
 		setAlertIt(false);
 		if (password.trim() === "" || email.trim() === "") {
@@ -56,6 +59,7 @@ const index = () => {
 			);
 			if (findUser.length > 0) {
 				if (findUser[0].password === password) {
+					dispatch(userId(findUser[0].email));
 					router.replace("/home");
 				} else {
 					setAlertIt(true);
