@@ -6,6 +6,7 @@ import {
 	ScrollView,
 	Modal,
 	Dimensions,
+	KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
@@ -49,7 +50,8 @@ const CheckOut = ({ setCheckout }) => {
 						trackingNumber: trackingNumber(),
 						order: cart,
 						id: generateId(),
-						status: check ? "pending" : "Delivered",
+						status: check ? "PENDING" : "DELIVERED",
+						time: new Date(),
 					},
 			  ]
 			: [
@@ -57,7 +59,8 @@ const CheckOut = ({ setCheckout }) => {
 						trackingNumber: trackingNumber(),
 						order: cart,
 						id: generateId(),
-						status: check ? "pending" : "Delivered",
+						status: check ? "PENDING" : "DELIVERED",
+						time: new Date(),
 					},
 			  ];
 		const updateThisUser = { ...thisUserRecord[0], history };
@@ -148,7 +151,10 @@ const CheckOut = ({ setCheckout }) => {
 							Shipping
 						</Text>
 					</View>
-					<View style={{ paddingVertical: 25 }}>
+					<KeyboardAvoidingView
+						behavior='padding'
+						style={{ paddingVertical: 25 }}
+					>
 						<Input
 							placeholder={"First Name"}
 							value={firstName}
@@ -181,7 +187,7 @@ const CheckOut = ({ setCheckout }) => {
 							value={phoneNumber}
 							setValue={setPhoneNumber}
 						/>
-					</View>
+					</KeyboardAvoidingView>
 					<View style={{ paddingBottom: 100 }}>
 						<View style={{ paddingVertical: 20 }}>
 							<Text style={{ fontSize: 25, color: "black", fontWeight: "900" }}>
@@ -426,8 +432,8 @@ const styles = StyleSheet.create({
 			height: 2,
 		},
 		shadowOpacity: 0.1,
-		shadowRadius: 3,
-		elevation: 3,
+		shadowRadius: 2,
+		elevation: 1,
 		borderWidth: 0.5,
 	},
 });

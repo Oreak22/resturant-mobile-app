@@ -65,6 +65,8 @@ const index = () => {
 					name,
 					password,
 					id: data.length + 1,
+					history: [],
+					billingDetails: [],
 				};
 				data.push(newUser);
 				await AsyncStorage.setItem("userRecord", JSON.stringify(data));
@@ -84,6 +86,8 @@ const index = () => {
 				name,
 				password,
 				id: 1,
+				history: [],
+				billingDetails: [],
 			};
 			newData.push(newUser);
 			await AsyncStorage.setItem("userRecord", JSON.stringify(newData));

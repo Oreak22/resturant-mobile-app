@@ -20,10 +20,10 @@ import { setHistory } from "../redux/golbalReducer";
 const ProfieBar = ({ title }) => {
 	const useremail = useSelector((state) => state.globalReducer.userId);
 	const history = useSelector((state) => state.globalReducer.history);
+	const cart = useSelector((state) => state.globalReducer.cart).length;
 	const [modalVisible, setModalVisible] = useState(false);
 	const [cart1, setCart1] = useState(false);
 	const dispatch = useDispatch();
-	console.log(history, "works");
 	const setIt = async () => {
 		const userData = await AsyncStorage.getItem("userRecord");
 		const thisUser = await JSON.parse(userData).filter(
@@ -46,9 +46,22 @@ const ProfieBar = ({ title }) => {
 				</TouchableOpacity>
 				<Text style={styles.NavbarTitle}>{title ? title : "Gemstore"}</Text>
 				<TouchableOpacity
-					style={styles.NavbarIcon}
+					style={[styles.NavbarIcon, { position: "relative" }]}
 					onPress={() => setCart1(true)}
 				>
+					{cart > 0 && (
+						<View
+							style={{
+								backgroundColor: "red",
+								width: 10,
+								height: 10,
+								borderRadius: 5,
+								position: "absolute",
+								top: 10,
+								right: 7,
+							}}
+						></View>
+					)}
 					<Feather name='shopping-cart' size={24} color='black' />
 				</TouchableOpacity>
 			</View>
