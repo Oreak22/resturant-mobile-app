@@ -29,20 +29,18 @@ const index = () => {
 		);
 		const userHistory = await userRecord[0].history;
 		setUserHistory(userHistory);
-		console.log(userHistory);
 	};
 	const currentData = userHistory.filter((item) => item.status == currentPage);
-	console.log();
 	useEffect(() => {
 		getHistory();
-	}, [0]);
+	}, [currentPage]);
 
 	return (
 		<>
 			<StatusBar animated backgroundColor={"white"} barStyle={"dark-content"} />
 			<ProfieBar title={"My Orders"} />
 			<SafeAreaView style={styles.container}>
-				<ScrollView>
+				<ScrollView >
 					<View style={styles.flexBtn}>
 						<TouchableOpacity
 							style={[
@@ -138,6 +136,8 @@ const styles = StyleSheet.create({
 		minHeight: Dimensions.get("window").height,
 		backgroundColor: "white",
 		// paddingHorizontal: 20,
+		paddingBottom:50,
+		backgroundColor:'red'
 	},
 	flexBtn: {
 		flexDirection: "row",

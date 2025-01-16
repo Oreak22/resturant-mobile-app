@@ -196,7 +196,7 @@ const CheckOut = ({ setCheckout }) => {
 							<View
 								style={{
 									paddingVertical: 20,
-									width: "90%",
+									width: "95%",
 									marginHorizontal: "auto",
 								}}
 							>

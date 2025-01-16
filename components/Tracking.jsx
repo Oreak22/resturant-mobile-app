@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -59,6 +59,7 @@ const Tracker = ({ checked }) => {
 	);
 };
 const Tracking = ({ record }) => {
+	const [newStatus, setNewStatus] = useState("PENDING");
 	const userEmail = useSelector((state) => state.globalReducer.userId);
 	const index = async (newRecord) => {
 		const data = await AsyncStorage.getItem("userRecord");
@@ -78,10 +79,12 @@ const Tracking = ({ record }) => {
 	const delivered = async () => {
 		record.status = "DELIVERED";
 		console.log(await index(record));
+		setNewStatus("DELIVERED");
 	};
 	const Cancelled = async () => {
 		record.status = "CANCELLED";
 		console.log(await index(record));
+		setNewStatus("CANCELLED");
 	};
 	return (
 		<View
@@ -90,6 +93,7 @@ const Tracking = ({ record }) => {
 				paddingHorizontal: 20,
 				backgroundColor: "white",
 				flex: 1,
+				minHeight: "100%",
 			}}
 		>
 			<View>
@@ -252,48 +256,61 @@ const Tracking = ({ record }) => {
 					</View>
 				</View>
 			</View>
-			<View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-				<TouchableOpacity
-					onPress={Cancelled}
-					style={[
-						{
-							width: "35%",
-							paddingVertical: 15,
-							borderRadius: 25,
-							backgroundColor: "black",
-						},
-						styles.shadow,
-					]}
-				>
-					<Text
-						style={{
-							textAlign: "center",
-							fontWeight: "500",
-							fontSize: 16,
-							color: "white",
-						}}
+			{newStatus === "PENDING" && (
+				<View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+					<TouchableOpacity
+						onPress={Cancelled}
+						style={[
+							{
+								width: "35%",
+								paddingVertical: 15,
+								borderRadius: 25,
+								backgroundColor: "black",
+							},
+							styles.shadow,
+						]}
 					>
-						Cancle Order
-					</Text>
-				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={delivered}
-					style={[
-						styles.shadow,
-						{
-							width: "35%",
-							paddingVertical: 15,
-							borderRadius: 25,
-							backgroundColor: "white",
-						},
-					]}
-				>
-					<Text
-						style={{ textAlign: "center", fontWeight: "500", fontSize: 16 }}
+						<Text
+							style={{
+								textAlign: "center",
+								fontWeight: "500",
+								fontSize: 16,
+								color: "white",
+							}}
+						>
+							Cancle Order
+						</Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+						onPress={delivered}
+						style={[
+							styles.shadow,
+							{
+								width: "35%",
+								paddingVertical: 15,
+								borderRadius: 25,
+								backgroundColor: "white",
+							},
+						]}
 					>
-						Confirm Delivery
-					</Text>
-				</TouchableOpacity>
+						<Text
+							style={{ textAlign: "center", fontWeight: "500", fontSize: 16 }}
+						>
+							Confirm Delivery
+						</Text>
+					</TouchableOpacity>
+				</View>
+			)}
+			<View style={{paddingVertical:20}}>
+				{newStatus === "DELIVERED" ? 
+				<TouchableOpacity style={{width:'100%',paddingVertical:15, borderRadius:20, backgroundColor:'black', justifyContent:'center',alignItems:'center', flexDirection:'row'}}>
+					<Text style={{textAlign:'center', color:'white', fontSize:18}}>Rate Our Service</Text>
+					<FontAwesome name='start' color='white' size={20}/>
+				</TouchableOpacity> : 
+				newStatus === "CANCELLED" && 
+				<>
+					<Text style={{textAlign:'center', fontSize:20, }}>We are sorry it didn't work out 😔</Text>
+				</>}
 			</View>
 		</View>
 	);

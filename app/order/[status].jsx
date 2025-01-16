@@ -11,7 +11,7 @@ const performAction = () => {
 	return (
 		<>
 			<SecondaryNavbar title={"Track Order"} centered={true} />
-			<ScrollView refreshControl={true}>
+			<ScrollView>
 				{status === "PENDING" ? (
 					<Tracking record={JSON.parse(records)} />
 				) : (
