@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "white",
 		// paddingHorizontal: 20,
 		paddingBottom:50,
-		backgroundColor:'red'
+		backgroundColor:'white'
 	},
 	flexBtn: {
 		flexDirection: "row",

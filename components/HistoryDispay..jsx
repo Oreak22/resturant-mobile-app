@@ -40,7 +40,7 @@ const HistoryDispay = ({ record }) => {
 	const subtotal = totalPay.reduce((a, b) => a + b);
 	const routeToRate = () => {
 		if (record.status === "CANCELLED") return;
-		router.push(`/order/${record.status}?records=${JSON.stringify(record)}`);
+		router.push(`/order/status?status=${record.status}&records=${JSON.stringify(record)}`);
 	};
 	useEffect(() => {
 		console.log(record.order);

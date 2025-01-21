@@ -86,6 +86,10 @@ const Tracking = ({ record }) => {
 		console.log(await index(record));
 		setNewStatus("CANCELLED");
 	};
+	const goToRatings=()=>{
+		const stringified = JSON.stringify(record)
+		router.replace(`/order/${userEmail}?data=${stringified}`)
+	}
 	return (
 		<View
 			style={{
@@ -303,9 +307,9 @@ const Tracking = ({ record }) => {
 			)}
 			<View style={{paddingVertical:20}}>
 				{newStatus === "DELIVERED" ? 
-				<TouchableOpacity style={{width:'100%',paddingVertical:15, borderRadius:20, backgroundColor:'black', justifyContent:'center',alignItems:'center', flexDirection:'row'}}>
+				<TouchableOpacity style={{width:'100%',paddingVertical:15, borderRadius:20, backgroundColor:'black', justifyContent:'center',alignItems:'center', flexDirection:'row'}} onPress={goToRatings}>
 					<Text style={{textAlign:'center', color:'white', fontSize:18}}>Rate Our Service</Text>
-					<FontAwesome name='start' color='white' size={20}/>
+					<FontAwesome name='star' color='white' size={20}/>
 				</TouchableOpacity> : 
 				newStatus === "CANCELLED" && 
 				<>

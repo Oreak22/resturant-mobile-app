@@ -119,7 +119,7 @@ const _layout = () => {
 					}}
 				/>
 				<Stack.Screen
-					name='order/[status]'
+					name='order/status'
 					options={{
 						headerShown: false,
 						animation: "flip",
