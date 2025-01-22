@@ -15,7 +15,7 @@ const performAction = () => {
 				{status === "PENDING" ? (
 					<Tracking record={JSON.parse(records)} />
 				) : (
-					<Delivered />
+					<Delivered record={JSON.parse(records)} />
 				)}
 			</ScrollView>
 		</>
