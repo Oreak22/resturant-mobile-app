@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
 		},
 		elevation: 1,
 		paddingVertical: 18,
-		paddingHorizontal: 35,
+		paddingHorizontal: 40,
 		borderRadius: 25,
 	},
 });
