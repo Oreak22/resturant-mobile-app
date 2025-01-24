@@ -122,7 +122,7 @@ const ProfieBar = ({ title }) => {
 										<Text style={styles.NavbarBodyItemText}>My Order</Text>
 									</View>
 								</Link>
-								<Link href='/profile'>
+								<Link href='/settings'>
 									<View style={styles.NavbarBodyItemIcon}>
 										<Feather
 											name='user'
@@ -142,7 +142,7 @@ const ProfieBar = ({ title }) => {
 								>
 									OTHER
 								</Text>
-								<Link href='/profile'>
+								<Link href='/'>
 									<View style={styles.NavbarBodyItemIcon}>
 										<Feather
 											name='help-circle'
@@ -153,7 +153,7 @@ const ProfieBar = ({ title }) => {
 										<Text style={styles.NavbarBodyItemText}>Support</Text>
 									</View>
 								</Link>
-								<Link href='/profile'>
+								<Link href='/'>
 									<View style={styles.NavbarBodyItemIcon}>
 										<Feather
 											name='settings'
@@ -164,7 +164,7 @@ const ProfieBar = ({ title }) => {
 										<Text style={styles.NavbarBodyItemText}>Setting</Text>
 									</View>
 								</Link>
-								<Link href='/profile'>
+								<Link href='/'>
 									<View style={styles.NavbarBodyItemIcon}>
 										<Feather
 											name='info'

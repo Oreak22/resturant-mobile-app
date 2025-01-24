@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 const Delivered = ({ record }) => {
-	console.log(record.order);
+	console.log(record.trackingNumber)
 	const subTotal = record.order
 		.map((item) => item.amount * item.price)
 		.reduce((a, b) => a + b, 0);
@@ -37,7 +38,7 @@ const Delivered = ({ record }) => {
 				</View>
 				<MaterialCommunityIcons
 					name='truck-delivery-outline'
-					size={50}
+					size={80}
 					color='white'
 				/>
 			</View>
@@ -201,7 +202,7 @@ const Delivered = ({ record }) => {
 			</View>
 
 			<View style={[styles.spaceBetween]}>
-				<TouchableOpacity style={[styles.btn, { backgroundColor: "white" }]}>
+				<Link href='/home' style={[styles.btn, { backgroundColor: "white" }]}>
 					<Text
 						style={{
 							textAlign: "center",
@@ -212,8 +213,8 @@ const Delivered = ({ record }) => {
 					>
 						Retun home
 					</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={[styles.btn, { backgroundColor: "black" }]}>
+				</Link>
+				<Link href={`/order/${record.trackingNumber}`} style={[styles.btn, { backgroundColor: "black" }]}>
 					<Text
 						style={{
 							textAlign: "center",
@@ -224,7 +225,7 @@ const Delivered = ({ record }) => {
 					>
 						Rate
 					</Text>
-				</TouchableOpacity>
+				</Link>
 			</View>
 		</View>
 	);
@@ -265,9 +266,9 @@ const styles = StyleSheet.create({
 			height: 1.8,
 		},
 		elevation: 1,
-		paddingVertical: 18,
-		paddingHorizontal: 40,
-		borderRadius: 25,
+		paddingVertical: 20,
+		paddingHorizontal: 55,
+		borderRadius: 30,
 	},
 });
 export default Delivered;

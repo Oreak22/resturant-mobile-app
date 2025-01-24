@@ -10,7 +10,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const Input = ({ value, setValue, placeholder }) => {
 	const [danger, setDanger] = useState(false);
-	const [dirty, setDirty] = useState(false);
+	const [dirty, setDirty] = useState(value ==='' ? false : true);
 	return (
 		<View>
 			{dirty && (

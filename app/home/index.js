@@ -17,6 +17,7 @@ import FeatureProduct from "../../components/FeatureProduct";
 import BottomNav from "../../components/BottomNav";
 import CollectionCard from "../../components/CollectionCard";
 import Recommendation from "../../components/Recommendation";
+import { SafeAreaView } from "react-native-safe-area-context";
 const index = () => {
 	const hangDatas = {
 		pic: require("../../assets/img/hangout collection.png"),
@@ -57,7 +58,7 @@ const index = () => {
 			<ProfieBar />
 			{/* Content */}
 			<ScrollView style={styles.container}>
-				<View style={styles.content}>
+				<SafeAreaView style={styles.content}>
 					<View style={{ paddingHorizontal: 20 }}>
 						<CatigoriesNav women={true} />
 					</View>
@@ -178,7 +179,7 @@ const index = () => {
 						</View>
 					</View>
 					{/* End of contents */}
-				</View>
+				</SafeAreaView>
 			</ScrollView>
 			{/* Bottom Nav */}
 			<BottomNav home={true} />

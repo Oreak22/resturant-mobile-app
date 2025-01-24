@@ -7,7 +7,6 @@ import SecondaryNavbar from "../../components/SecondaryNavbar";
 
 const performAction = () => {
 	const { status, records } = useLocalSearchParams();
-	console.log(status);
 	return (
 		<>
 			<SecondaryNavbar title={"Track Order"} centered={true} />

@@ -30,7 +30,7 @@ const BottomNav = ({ home, discover, order, profie }) => {
         />
       </Link>
 
-      <Link href='/' style={styles.tab}>
+      <Link href='/settings' style={styles.tab}>
         <Ionicons
           name='person-outline'
           size={24}

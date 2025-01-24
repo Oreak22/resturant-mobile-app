@@ -132,6 +132,26 @@ const _layout = () => {
 						headerRightLabelStyle: { fontFamily: "Product Sans Regular" },
 					}}
 				/>
+				<Stack.Screen
+					name='settings/index'
+					options={{
+						headerShown: false,
+						animation: "flip",
+						presentation: "modal",
+						headerLeftLabelStyle: { fontFamily: "Product Sans Regular" },
+						headerRightLabelStyle: { fontFamily: "Product Sans Regular" },
+					}}
+				/>
+				<Stack.Screen
+					name='settings/edit-profie'
+					options={{
+						headerShown: false,
+						animation: "flip",
+						presentation: "modal",
+						headerLeftLabelStyle: { fontFamily: "Product Sans Regular" },
+						headerRightLabelStyle: { fontFamily: "Product Sans Regular" },
+					}}
+				/>
 			</Stack>
 		</Provider>
 	);
